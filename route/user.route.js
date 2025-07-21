@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../api/models/user.model");
 const mongoose = require("mongoose");
 
-router.get(
+router.post(
   "/login",
   [
     check("email", "Please add a valid email").isEmail(),
@@ -44,7 +44,7 @@ router.get(
         isLogin: true,
       });
     } catch (e) {
-      res.status(400).json({ res, e });
+      res.status(500).json({ res, e });
     }
   }
 );
