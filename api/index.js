@@ -4,10 +4,14 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const userRoute= require("../route/user.route");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
   .connect(process.env.REACT_APP_MONGO_URI, {
@@ -179,6 +183,7 @@ app.post("/api/fetch-flights", async (req, res) => {
   }
 });
 
+app.use("/api/user", userRoute);
 app.get("/", (req, res) => {
   res.send("Amadeus API is running.");
 });
