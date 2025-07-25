@@ -110,6 +110,7 @@ async function fetchFlightsIfNotInDB(
             destinationLocationCode: destination,
             departureDate: date,
             adults,
+            travelClass: "BUSINESS",
           },
         }
       );
