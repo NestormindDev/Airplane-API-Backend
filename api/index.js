@@ -166,8 +166,9 @@ app.post("/api/fetch-flights", async (req, res) => {
   }
 
   try {
-    const dates = getSameDayEachMonth(selectedDate);
+   // const dates = getSameDayEachMonth(selectedDate);
     const [token1] = await Promise.all([getAmadeusToken(1)]);
+    const dates=[selectedDate]
     const [res1] = await Promise.all([
       fetchFlightsIfNotInDB(origin, destination, adults, dates, token1, 1),
     ]);
